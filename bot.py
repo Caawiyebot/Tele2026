@@ -7,7 +7,7 @@ import os
 
 # --- Configuration ---
 # FADLAN BEDDEL 'YOUR_BOT_TOKEN' token-kaaga dhabta ah ee Telegram
-TOKEN = 'YOUR_BOT_TOKEN'
+TOKEN = os.environ.get('BOT_TOKEN', 'YOUR_BOT_TOKEN')
 bot = telebot.TeleBot(TOKEN)
 
 # Database setup (SQLite fudud)
@@ -48,15 +48,15 @@ def populate_data():
     # Courses Data
     courses_data = [
         # Free Courses
-        {"title": "AI Video Editing", "description": "Waxaa jira sagaal cashar oo bilaash ah oo ku saabsan hababka ugu dambeeyay ee video editing iyadoo la isticmaalayo adeegyada iyo website-yada casriga ah.", "type": "Free", "link": "https://t.me/+eJxxMKtunMcwODhk", "telegram_id": None},
+        {"title": "AI Video Editing", "description": "Waxaa jira sagaal cashar oo bilaash ah oo ku saabsan hababka ugu dambeeyay ee video editing iyadoo la isticmaalayo adeegyada iyo website-yada casriga ah.", "type": "Free", "link": "https://chat.whatsapp.com/DIu9h23H5R28ozxfMFTkdq", "telegram_id": None},
         {"title": "AI Automation", "description": "Baro sida loo otomatigeyo hawlaha iyadoo la isticmaalayo AI. Casharada waxaa ku jira manhajka AI iyo Chatbot-yada.", "type": "Free", "link": "https://classroom.google.com/c/ODAzMzUwNDIyOTU0?cjc=sdvvlyc2", "telegram_id": None},
-        {"title": "AI Shopify", "description": "Baro sida loo dhiso dukaanka Shopify iyadoo la isticmaalayo AI.", "type": "Free", "link": "https://t.me/+eJxxMKtunMcwODhk", "telegram_id": None},
-        {"title": "Adobe Premiere Pro", "description": "Casharada aasaasiga ah ee video editing iyadoo la isticmaalayo Adobe Premiere Pro CC 2020.", "type": "Free", "link": "TELEGRAM_GROUP_LINK_ADOBE", "telegram_id": None},
-        {"title": "Basic Language", "description": "Casharada luqadda aasaasiga ah oo ay bixiyaan macallimiin Soomaali ah.", "type": "Free", "link": "TELEGRAM_GROUP_LINK_BASIC", "telegram_id": "@somalienglish3"},
-        {"title": "Intermediate Language", "description": "Casharada luqadda dhexe oo loogu talagalay kuwa doonaya inay horumariyaan luqaddooda.", "type": "Free", "link": "TELEGRAM_GROUP_LINK_INTERMEDIATE", "telegram_id": "@somalienglish1"},
+        {"title": "AI Shopify", "description": "Baro sida loo dhiso dukaanka Shopify iyadoo la isticmaalayo AI.", "type": "Free", "link": "https://chat.whatsapp.com/DIu9h23H5R28ozxfMFTkdq", "telegram_id": None},
+        {"title": "Adobe Premiere Pro", "description": "Casharada aasaasiga ah ee video editing iyadoo la isticmaalayo Adobe Premiere Pro CC 2020.", "type": "Free", "link": "https://www.messenger.com/channel/soomaalipodcast/AbZkquUZAfzDLfvI/", "telegram_id": None},
+        {"title": "Basic Language", "description": "Casharada luqadda aasaasiga ah oo ay bixiyaan macallimiin Soomaali ah.", "type": "Free", "link": "https://www.messenger.com/channel/soomaalipodcast", "telegram_id": "@somalienglish3"},
+        {"title": "Intermediate Language", "description": "Casharada luqadda dhexe oo loogu talagalay kuwa doonaya inay horumariyaan luqaddooda.", "type": "Free", "link": "https://www.messenger.com/channel/soomaalipodcast/Aba-uQI70rr-LJXY/", "telegram_id": "@somalienglish1"},
         
         # Paid Courses (Placeholder for contact info)
-        {"title": "Premium Courses", "description": "Koorsooyin premium ah oo leh khidmad yar oo bille ah. Waxaad heli doontaa casharo gaar ah afar habeen toddobaadkii.", "type": "Paid", "link": "WHATSAPP_GROUP_LINK_PAID", "telegram_id": "@Mfaratoon"},
+        {"title": "Premium Courses", "description": "Koorsooyin premium ah oo leh khidmad yar oo bille ah. Waxaad heli doontaa casharo gaar ah afar habeen toddobaadkii.", "type": "Paid", "link": "https://chat.whatsapp.com/KzkcjwraeYhCsUXaexgNyM", "telegram_id": "@Mfaratoon"},
     ]
 
     for data in courses_data:
@@ -65,8 +65,8 @@ def populate_data():
     # Lessons Data (Example for AI Automation/Chatbot Course)
     # Waxaan isticmaalaynaa casharada manhajka AI iyo Chatbot-yada ee aan horey u sameeyay
     lessons_data = [
-        {"course_title": "AI Automation", "lesson_number": 1, "title": "Hordhac ku saabsan AI iyo Chatbots", "content": "Qeexidda AI, taariikhda, iyo codsiyada muhiimka ah.", "video_link": "VIDEO_LINK_1"},
-        {"course_title": "AI Automation", "lesson_number": 2, "title": "Hababka Barashada Mashiinka", "content": "Barashada la kormeeran, aan la kormeeran, iyo barashada xoojinta.", "video_link": "VIDEO_LINK_2"},
+        {"course_title": "AI Automation", "lesson_number": 1, "title": "Hordhac ku saabsan AI iyo Chatbots", "content": "Qeexidda AI, taariikhda, iyo codsiyada muhiimka ah.", "video_link": "https://shorturl.at/omOCW"},
+        {"course_title": "AI Automation", "lesson_number": 2, "title": "Hababka Barashada Mashiinka", "content": "Barashada la kormeeran, aan la kormeeran, iyo barashada xoojinta.", "video_link": "https://shorturl.at/omOCW"},
         # Ku dar casharada kale ee manhajka halkan
     ]
 
@@ -130,7 +130,7 @@ def get_lesson_inline_markup(course_title):
         markup.add(types.InlineKeyboardButton(f"Cashar {lesson.lesson_number}: {lesson.title}", callback_data=f"lesson_{lesson.id}"))
     
     # Ku dar button-ka WhatsApp Community
-    markup.add(types.InlineKeyboardButton("WhatsApp Group 💬", url="WHATSAPP_COMMUNITY_LINK"))
+    markup.add(types.InlineKeyboardButton("WhatsApp Group 💬", url="https://shorturl.at/3HXba"))
     
     return markup
 
@@ -166,7 +166,7 @@ def handle_paid_courses(message):
     markup = types.InlineKeyboardMarkup()
     markup.add(types.InlineKeyboardButton("WhatsApp Group 💬", url=paid_course.link if paid_course else "WHATSAPP_GROUP_LINK_PAID"))
     markup.add(types.InlineKeyboardButton(f"Telegram ID: {paid_course.telegram_id}" if paid_course else "Telegram ID: @Mfaratoon", url=f"https://t.me/{paid_course.telegram_id.replace('@', '')}" if paid_course and paid_course.telegram_id else "https://t.me/Mfaratoon"))
-    markup.add(types.InlineKeyboardButton("WhatsApp Community 💬", url="WHATSAPP_COMMUNITY_LINK"))
+    markup.add(types.InlineKeyboardButton("WhatsApp Community 💬", url="https://shorturl.at/3HXba"))
     
     bot.send_message(message.chat.id, text, reply_markup=markup)
 
@@ -175,9 +175,9 @@ def handle_ai_chatbot(message):
     text = "Halkan, waxaad ku baran doontaa inaad abuurto chatbot-yo aan codayn lahayn iyada oo aan lagu lahayn khibrad hore oo IT ama barnaamijyada. Tan waxaa ka mid ah abuurista chatbot-yo gaar ah oo Telegram, WhatsApp, iyo Messenger ah. Fadlan iska diiwaangeli halkan, ka dibna dir links-kan labada ah sida button 'Lesson' ah:"
     
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton("Register 📝", url="REGISTRATION_LINK"))
+    markup.add(types.InlineKeyboardButton("Register 📝", url="https://shorturl.at/O3TSv"))
     markup.add(types.InlineKeyboardButton("AI Automation and Chatbots Course 🤖", callback_data="show_lessons_AI Automation"))
-    markup.add(types.InlineKeyboardButton("WhatsApp Group 💬", url="WHATSAPP_COMMUNITY_LINK"))
+    markup.add(types.InlineKeyboardButton("WhatsApp Group 💬", url="https://shorturl.at/3HXba"))
     
     bot.send_message(message.chat.id, text, reply_markup=markup)
 
@@ -190,8 +190,8 @@ def handle_ai_video_editing(message):
     text = course.description if course else "Waxaa jira sagaal cashar oo bilaash ah oo ku saabsan hababka ugu dambeeyay ee video editing iyadoo la isticmaalayo adeegyada iyo website-yada casriga ah. Waxaan ka hadli doonaa kuwan si faahfaahsan sagaalka cashar. Si aad u hesho casharada, fadlan raac links-ka hoose:"
     
     markup = types.InlineKeyboardMarkup()
-    markup.add(types.InlineKeyboardButton("9 AI Video Editing Lessons 🎬", url=course.link if course else "AI_VIDEO_LESSONS_LINK"))
-    markup.add(types.InlineKeyboardButton("WhatsApp Group 💬", url="WHATSAPP_COMMUNITY_LINK"))
+    markup.add(types.InlineKeyboardButton("9 AI Video Editing Lessons 🎬", url=course.link if course else "https://www.youtube.com/user/MrFaraton"))
+    markup.add(types.InlineKeyboardButton("WhatsApp Group 💬", url="https://shorturl.at/3HXba"))
     
     bot.send_message(message.chat.id, text, reply_markup=markup)
 
